@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yoon.book.models.BooksDto;
 import com.yoon.book.service.BooksService;
@@ -42,8 +43,11 @@ public class HomeController {
 	}
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String bookInsert(@ModelAttribute BooksDto booksDto) {
-		int result = booksService.insert(booksDto);
 		
+		int result = booksService.insert(booksDto);
+		if (result < 0) {
+			return "/insert";
+		}
 		return "redirect:/";
 	}
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
@@ -63,7 +67,43 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="/book_check", method=RequestMethod.GET)
+	public BooksDto findBookCode(String bookCode) {
+		BooksDto booksDto = booksService.findByBCODE(bookCode);
+		if(booksDto != null ) {
+			booksDto = BooksDto.builder()
+					.b_code("NOT")
+					.b_name("")
+					.b_auther("")
+					.b_comp("")
+					.b_year(0)
+					.b_iprice(0)
+					.b_rprice(0)
+					.build();
+		} 
+
+		return booksDto;
+	}
+	@ResponseBody
+	@RequestMapping(value="/book_name_check", method=RequestMethod.GET)
+	public BooksDto findBookName(String bookName) {
+		BooksDto booksDto = booksService.findByBNAME(bookName);
+		if (booksDto != null) {
+			booksDto = BooksDto.builder()
+					.b_code("")
+					.b_name("NOT")
+					.b_auther("")
+					.b_comp("")
+					.b_year(0)
+					.b_iprice(0)
+					.b_rprice(0)
+					.build();
+		}
+		return booksDto;
+	}
 	
+
 	
 	
 }

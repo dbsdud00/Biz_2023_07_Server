@@ -14,4 +14,5 @@ public interface BooksService {
 	
 	public int update(BooksDto booksDto);
 	
+	public BooksDto findByBNAME(String b_name);
 }

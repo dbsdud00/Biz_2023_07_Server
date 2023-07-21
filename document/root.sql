@@ -52,6 +52,9 @@ REFERENCES tbl_users(u_code);
 SELECT * FROM tbl_books
 WHERE b_code='000001';
 
+SELECT * FROM tbl_books
+WHERE b_name='000001';
+
 UPDATE tbl_books
 SET b_name='책이름',
 	b_auther='저자',
@@ -75,9 +78,11 @@ WHERE u_code = 'U00001';
 SELECT * FROM tbl_rent_book;
 
 
-SELECT rent_seq, rent_bcode, b_name, rent_ucode, u_name, rent_date, rent_return_date, 
 
 
+SELECT  COUNT(*) FROM tbl_users
+GROUP BY u_name, u_tel
+HAVING COUNT(*) > 1;
 
 
 

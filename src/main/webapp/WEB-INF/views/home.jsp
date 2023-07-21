@@ -15,6 +15,7 @@
 </script>
 <script src="${rootPath}/static/js/book_detail.js"></script>
 <script src="${rootPath}/static/js/user_detail.js"></script>
+<script src="${rootPath}/static/js/error.js"></script>
 </head>
 <body>
 	<header>빛고을 Book Rent Management System 2023</header>

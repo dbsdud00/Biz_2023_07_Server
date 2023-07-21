@@ -16,4 +16,6 @@ public interface BooksDao {
 	public BooksDto findByBCODE(String b_code);
 	
 	public int update(BooksDto booksDto);
+	
+	public BooksDto findByBNAME(String b_name);
 }

@@ -11,4 +11,6 @@ public interface UserService {
 	public UserDto findByUCODE(String u_code);
 	
 	public int update(UserDto userDto);
+	
+	public int findByUNAMETEL(UserDto userDto);
 }

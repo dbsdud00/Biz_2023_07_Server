@@ -8,6 +8,9 @@ import com.yoon.book.dao.UserDao;
 import com.yoon.book.models.UserDto;
 import com.yoon.book.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class UserServiceImplV1 implements UserService {
 
@@ -44,6 +47,17 @@ public class UserServiceImplV1 implements UserService {
 	public int update(UserDto userDto) {
 		// TODO Auto-generated method stub
 		return userDao.update(userDto);
+	}
+
+
+	@Override
+	public int findByUNAMETEL(UserDto userDto) {
+		String result = userDao.findByUNAMETEL(userDto);
+		log.debug(result + "000000000000000000000000000000000");
+		if (result == null) {
+			return 1;
+		}
+		return 0;
 	}
 
 

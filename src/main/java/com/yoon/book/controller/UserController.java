@@ -12,6 +12,9 @@ import com.yoon.book.models.BooksDto;
 import com.yoon.book.models.UserDto;
 import com.yoon.book.service.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class UserController {
 	
@@ -41,6 +44,10 @@ public class UserController {
 	
 	@RequestMapping(value = "/user/insert", method = RequestMethod.POST)
 	public String userInsert(@ModelAttribute UserDto userDto) {
+		log.debug(userService.findByUNAMETEL(userDto)+"==============================================@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		if(userService.findByUNAMETEL(userDto) < 1) {
+			return "redirect:/user/insert";
+		}
 		int result = userService.insert(userDto);
 		return "redirect:/user";
 	}

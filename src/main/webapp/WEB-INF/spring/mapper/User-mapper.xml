@@ -26,5 +26,12 @@
 		SELECT * FROM tbl_users
 		WHERE u_code = #{u_code}
 	</select>
+	
+	<select id="findByUNAMETEL">
+		SELECT u_name, u_tel,  COUNT(*) FROM tbl_users
+		WHERE   <![CDATA[u_name=#{u_name} && u_tel=#{u_tel}]]> 
+		GROUP BY u_name, u_tel
+		HAVING <![CDATA[COUNT(*) > 0]]> 
+	</select>
  
  </mapper> 

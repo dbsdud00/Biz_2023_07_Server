@@ -28,5 +28,8 @@
 		SELECT * FROM tbl_books
 		WHERE b_code=#{b_code}
 	</select>
- 
+ 	<select id="findByBNAME">
+ 		SELECT * FROM tbl_books
+		WHERE b_name = #{b_name} 
+ 	</select>
  </mapper> 

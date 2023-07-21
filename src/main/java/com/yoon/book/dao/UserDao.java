@@ -16,4 +16,7 @@ public interface UserDao {
 	public UserDto findByUCODE(String u_code);
 	
 	public int update(UserDto userDto);
+	
+	public String findByUNAMETEL(UserDto userDto);
+	
 }
